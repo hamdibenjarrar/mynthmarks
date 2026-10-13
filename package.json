@@ -1,0 +1,14 @@
+﻿{
+  "name": "mynthmarks",
+  "version": "0.1.0",
+  "description": "Glass badges for GitHub profiles and READMEs. Progress, tasks, tools, evolution, community, agents and support, plus live GitHub numbers.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Hamdi Ben Jarrar <hamdibenjarrar@gmail.com>",
+  "homepage": "https://github.com/hamdibenjarrar/mynthmarks",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test",
+    "preview": "node scripts/preview.js"
+  }
+}

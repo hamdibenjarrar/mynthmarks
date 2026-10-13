@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mynthmarks</title>
+<meta name="description" content="Glass badges for GitHub profiles and READMEs. Status, progress, tasks, tools, evolution, community, agents and support, plus live GitHub numbers.">
+<style>
+:root{--void:#07070a;--ivory:#f5f0e8;--gold:#c9a84c;--crimson:#c23a3a;--ice:#8fb8ff;--dim:#a8a39a;--line:rgba(255,255,255,.12);--pane:rgba(255,255,255,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--ivory);font:16px/1.6 "Segoe UI","SF Pro Text","Helvetica Neue",Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-20%;background:radial-gradient(40% 35% at 15% 10%,rgba(194,58,58,.35),transparent 70%),radial-gradient(35% 30% at 90% 20%,rgba(143,184,255,.28),transparent 70%),radial-gradient(45% 35% at 55% 100%,rgba(201,168,76,.3),transparent 70%);filter:blur(30px);z-index:-1}
+main{max-width:1040px;margin:0 auto;padding:56px 16px 80px}
+.eyebrow{font:13px/1 ui-monospace,"Cascadia Code",Consolas,monospace;letter-spacing:3px;color:var(--gold)}
+h1{font-size:clamp(40px,7vw,72px);line-height:1.02;margin:14px 0 12px;letter-spacing:-1.5px}
+h2{font-size:24px;margin:0 0 16px}
+p.lead{color:var(--dim);max-width:640px;font-size:18px}
+.glass{background:var(--pane);border:1px solid var(--line);border-radius:22px;padding:24px;margin-top:28px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.gallery{display:flex;flex-wrap:wrap;gap:10px}
+.gallery a{display:inline-flex}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+label{display:block;font:12px ui-monospace,Consolas,monospace;letter-spacing:1.5px;color:var(--dim);margin-bottom:6px;text-transform:uppercase}
+input,select{width:100%;background:rgba(0,0,0,.35);color:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit}
+.out{display:flex;align-items:center;justify-content:center;min-height:90px;margin:18px 0;border-radius:16px;border:1px dashed var(--line)}
+pre{margin:0;white-space:pre-wrap;word-break:break-all;background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:14px;padding:14px;font:13px/1.55 ui-monospace,Consolas,monospace;color:#e8cd7e}
+button{margin-top:10px;background:var(--gold);color:#1a1405;border:0;border-radius:999px;padding:9px 18px;font-weight:700;cursor:pointer}
+code{font-family:ui-monospace,Consolas,monospace;color:#e8cd7e}
+table{width:100%;border-collapse:collapse;font-size:15px}td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+a{color:var(--ice)}
+footer{margin-top:40px;color:var(--dim);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">MYNTHISM  /  OPEN SOURCE</div>
+  <h1>Mynthmarks</h1>
+  <p class="lead">Glass badges for GitHub profiles and READMEs. They show where work stands: status, progress, tasks, tools, evolution, community, agents and support. Live marks read public GitHub numbers. Free, no sign up, MIT licensed.</p>
+
+  <section class="glass" aria-labelledby="g">
+    <h2 id="g">Every kind</h2>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section class="glass" aria-labelledby="b">
+    <h2 id="b">Make one</h2>
+    <div class="grid">
+      <div><label for="kind">Kind</label><select id="kind"></select></div>
+      <div><label for="value">Value</label><input id="value" value="live"></div>
+      <div><label for="lbl">Label (optional)</label><input id="lbl" placeholder="default"></div>
+      <div><label for="tone">Tone</label><select id="tone"><option value="">auto</option><option>gold</option><option>crimson</option><option>ice</option><option>mint</option><option>violet</option><option>rose</option><option>ivory</option><option>slate</option></select></div>
+      <div><label for="theme">Theme</label><select id="theme"><option>dark</option><option>light</option></select></div>
+      <div><label for="link">Link to</label><input id="link" value="#projects"></div>
+    </div>
+    <div class="out"><img id="preview" alt="preview"></div>
+    <pre id="snippet"></pre>
+    <button data-copy="snippet">Copy markdown</button>
+  </section>
+
+  <section class="glass" aria-labelledby="l">
+    <h2 id="l">Live marks</h2>
+    <div class="grid">
+      <div><label for="user">GitHub user</label><input id="user" value="hamdibenjarrar"></div>
+      <div><label for="metric">Metric</label><select id="metric"><option>evolution</option><option>contributions</option><option>pulse</option><option>streak</option><option>longest</option><option>stars</option><option>repos</option><option>followers</option><option>languages</option></select></div>
+    </div>
+    <div class="out"><img id="livePreview" alt="live preview"></div>
+    <pre id="liveSnippet"></pre>
+    <button data-copy="liveSnippet">Copy markdown</button>
+  </section>
+
+  <section class="glass" aria-labelledby="e">
+    <h2 id="e">The Evolution Score</h2>
+    <p>A number from 0 to 1000 built from the last year of public activity. Every part runs from 0 to 1 and flattens out, so one huge week cannot max it. Steady work wins.</p>
+    <pre>E = 1000 x (0.30 V + 0.20 C + 0.15 S + 0.15 M + 0.10 R + 0.10 L)</pre>
+    <table>
+      <tr><th>Part</th><th>Meaning</th><th>Formula</th></tr>
+      <tr><td>V volume</td><td>how much</td><td><code>1 - e^(-contributions / 1000)</code></td></tr>
+      <tr><td>C consistency</td><td>how often</td><td><code>active days / days</code></td></tr>
+      <tr><td>S streak</td><td>right now</td><td><code>1 - e^(-current streak / 30)</code></td></tr>
+      <tr><td>M momentum</td><td>speeding up or not</td><td><code>min(1, (last 90 day rate / earlier rate) / 2)</code></td></tr>
+      <tr><td>R reach</td><td>who cares</td><td><code>1 - e^(-(stars + followers) / 200)</code></td></tr>
+      <tr><td>L range</td><td>how wide</td><td><code>1 - e^(-languages / 6)</code></td></tr>
+    </table>
+    <p>Levels: Seed 0, Sprout 200, Grove 400, Canopy 600, Myth 800. See every part for any user at <code>/api/json?source=live&amp;metric=evolution&amp;detail=1&amp;user=NAME</code>.</p>
+  </section>
+
+  <footer>Made by <a href="https://github.com/hamdibenjarrar">Hamdi Ben Jarrar</a> at MYNTHISM. Source on <a href="https://github.com/hamdibenjarrar/mynthmarks">GitHub</a>.</footer>
+</main>
+<script>
+const KINDS = { status:'live', progress:'72', tasks:'12/20', tools:'Next.js', evolution:'v3', functions:'24 endpoints', community:'open to all', contributions:'open source', achievement:'first release', agent:'Nomen', ai:'Prevent', project:'MYNTHISM', code:'TypeScript', site:'mynthism.vercel.app', contact:'say hello', nav:'Projects', donate:'support my work' };
+const origin = location.origin;
+const $ = (id) => document.getElementById(id);
+const gallery = $('gallery');
+for (const [k, v] of Object.entries(KINDS)) {
+  $('kind').add(new Option(k, k));
+  const a = document.createElement('a');
+  a.href = '#b';
+  a.onclick = () => { $('kind').value = k; $('value').value = v; build(); };
+  const img = new Image();
+  img.alt = k + ': ' + v;
+  img.src = `/api/mark?kind=${k}&value=${encodeURIComponent(v)}`;
+  a.append(img);
+  gallery.append(a);
+}
+function build() {
+  const p = new URLSearchParams({ kind: $('kind').value, value: $('value').value });
+  if ($('lbl').value) p.set('label', $('lbl').value);
+  if ($('tone').value) p.set('tone', $('tone').value);
+  if ($('theme').value === 'light') p.set('theme', 'light');
+  const url = `${origin}/api/mark?${p}`;
+  $('preview').src = url;
+  $('snippet').textContent = `[![${$('kind').value}: ${$('value').value}](${url})](${$('link').value || '#'})`;
+}
+function buildLive() {
+  const user = $('user').value.trim() || 'hamdibenjarrar';
+  const url = `${origin}/api/live?user=${encodeURIComponent(user)}&metric=${$('metric').value}`;
+  $('livePreview').src = url;
+  $('liveSnippet').textContent = `[![${$('metric').value}](${url})](https://github.com/${user})`;
+}
+for (const id of ['kind','value','lbl','tone','theme','link']) $(id).addEventListener('input', build);
+for (const id of ['user','metric']) $(id).addEventListener('change', buildLive);
+$('kind').addEventListener('change', () => { $('value').value = KINDS[$('kind').value]; build(); });
+document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText($(b.dataset.copy).textContent); b.textContent = 'Copied'; setTimeout(() => (b.textContent = 'Copy markdown'), 1400); } catch (e) { b.textContent = 'Select and copy'; }
+}));
+$('kind').value = 'status';
+build(); buildLive();
+</script>
+</body>
+</html>
