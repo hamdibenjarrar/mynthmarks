@@ -1,4 +1,4 @@
-﻿import test from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert/strict';
 import { renderMark } from '../lib/render.js';
 import { parseValue, statusTone } from '../lib/presets.js';
